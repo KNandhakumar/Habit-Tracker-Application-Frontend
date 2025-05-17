@@ -1,8 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-habits',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './habits.component.html',
   styleUrl: './habits.component.css'
 })
