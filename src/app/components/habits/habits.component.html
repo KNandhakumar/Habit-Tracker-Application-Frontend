@@ -1,1 +1,15 @@
-<p>habits works!</p>
+<div class="min-h-screen bg-gray-100 p-4">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center text-emerald-600">My Daily Habit</h1>
+    <div *ngFor="let habit of habits" class="bg-white shadow-md rounded-2xl p-4 mb-4 hover:shadow-xl transition duration-300">
+      <div class="flex justify-between items-center">
+        <h2 class="text-xl-center font-semibold text-gray-800">{{habit.name}}</h2>
+        <p class="text-sm text-gray-600">{{habit.description}}</p>
+      </div>
+      <div>
+        <span [ngClass]="habit.completed ? 'bg-emerald-500' : 'bg-red-400'"
+        class="text-white font-medium px-3 py-1 rounded-full cursor-pointer">{{habit.completed ? 'Completed' : 'Pending'}}</span>
+      </div>
+    </div>
+  </div>
+</div>
