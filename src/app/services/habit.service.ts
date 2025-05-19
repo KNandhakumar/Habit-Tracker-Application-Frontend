@@ -19,4 +19,9 @@ export class HabitService {
     return this.http.get<Habit[]>(this.apiUrl);
   };
 
+  // create habits
+  createHabit(habit:Habit):Observable<Habit>{
+    return this.http.post<Habit>(this.apiUrl,habit);
+  };
+
 }
