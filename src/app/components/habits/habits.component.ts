@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Habit } from '../../model/habit.model';
+import { HabitService } from '../../services/habit.service';
 
 @Component({
   selector: 'app-habits',
@@ -7,10 +9,16 @@ import { Component } from '@angular/core';
   templateUrl: './habits.component.html',
   styleUrl: './habits.component.css'
 })
-export class HabitsComponent {
-  habits = [
-    {id: 1, name: 'Morning Exercise',description: "30 minutes run",completed: true},
-    {id: 2, name: 'Books Reading',description: "Read 10 Pages",completed: true},
-    {id: 3, name: 'Drink Water',description: "8 Glasses a day",completed: false},
-  ]
+export class HabitsComponent implements OnInit{
+  constructor(private habitService:HabitService) {}
+
+  // getting all habits
+  habits:Habit[] = [];
+
+  ngOnInit(): void {
+    this.habitService.getHabits().subscribe((data) => {
+      this.habits = data;
+    });
+  };
+
 }
