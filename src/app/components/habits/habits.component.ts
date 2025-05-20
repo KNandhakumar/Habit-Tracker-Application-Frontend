@@ -42,4 +42,13 @@ export class HabitsComponent implements OnInit{
     });
   };
 
+  // toggle for Put request
+  toggleHabit(habit:Habit):void{
+    // it copies all the existing properties of the habit object
+    // completed: this means we are toggling the value of completed
+    // if habit.completed is true, it changes to false
+    // if habit.completed is false,it changes to true
+    habit.completed = !habit.completed;
+  };
+
 }
