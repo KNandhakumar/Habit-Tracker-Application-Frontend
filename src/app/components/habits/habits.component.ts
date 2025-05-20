@@ -16,13 +16,17 @@ export class HabitsComponent implements OnInit{
   // getting all habits
   habits:Habit[] = [];
 
+  // ngOninit() is called automatically, when the component loads
   ngOnInit(): void {
+    // calls getHabits from the service
     this.habitService.getHabits().subscribe((data) => {
+      // .subscribe listens to the data returned and stored it in this.habits
       this.habits = data;
     });
   };
 
   // creating habits
+  // this is the model for a new habit that the user can full in.
   newHabit:Habit = {
     name: '',
     description: '',
@@ -30,10 +34,11 @@ export class HabitsComponent implements OnInit{
   };
 
   addHabit(){
+    // checks if both are filled.if not, it stops the function
     if (!this.newHabit.name || !this.newHabit.description) return;
     this.habitService.createHabit(this.newHabit).subscribe((habit) => {
       this.habits.push(habit);
-      this.newHabit = {name: '',description: '', completed: false};
+      this.newHabit = {name: '',description: '', completed: false}; // reset the form again
     });
   };
 
