@@ -31,4 +31,8 @@ export class HabitService {
     return this.http.put<Habit>(`${this.apiUrl}/${habit.id}`,habit);
   };
 
+  deleteService(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  };
+
 }
