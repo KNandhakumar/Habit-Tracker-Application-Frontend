@@ -51,4 +51,11 @@ export class HabitsComponent implements OnInit{
     habit.completed = !habit.completed;
   };
 
+  // delete habit
+  deleteHabit(id:any):void{
+    this.habitService.deleteService(id).subscribe(() => {
+      this.habits = this.habits.filter(h => h.id !== id);
+    });
+  };
+
 }
