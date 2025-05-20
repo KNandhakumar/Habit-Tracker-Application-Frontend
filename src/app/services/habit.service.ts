@@ -26,4 +26,9 @@ export class HabitService {
     return this.http.post<Habit>(this.apiUrl,habit);
   };
 
+  // update habit
+  updateHabit(habit:Habit):Observable<Habit>{
+    return this.http.put<Habit>(`${this.apiUrl}/${habit.id}`,habit);
+  };
+
 }
