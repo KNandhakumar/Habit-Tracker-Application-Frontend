@@ -35,11 +35,16 @@ export class HabitsComponent implements OnInit{
 
   addHabit(){
     // checks if both are filled.if not, it stops the function
-    if (!this.newHabit.name || !this.newHabit.description) return;
+    if (!this.newHabit.name.trim() || !this.newHabit.description.trim()){
+      alert('Please fill in both name and description');
+      return;
+    }
     this.habitService.createHabit(this.newHabit).subscribe((habit) => {
       this.habits.push(habit);
       this.newHabit = {name: '',description: '', completed: false}; // reset the form again
-    });
+      alert('Habit added successfully');
+    }, (error) => alert('Something went wrong while adding habit.')
+  );
   };
 
   // toggle for Put request
@@ -51,4 +56,10 @@ export class HabitsComponent implements OnInit{
     habit.completed = !habit.completed;
   };
 
+  // delete habit
+  deleteHabit(id:any):void{
+    this.habitService.deleteService(id).subscribe(() => {
+      this.habits = this.habits.filter(h => h.id !== id);
+    });
+  };
 }
