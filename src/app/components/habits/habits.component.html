@@ -16,9 +16,10 @@
         <h2 class="text-xl-center font-semibold text-gray-800">{{habit.name}}</h2>
         <p class="text-sm text-gray-600">{{habit.description}}</p>
       </div>
+      <!-- Toggle -->
       <div>
-        <span [ngClass]="habit.completed ? 'bg-emerald-500' : 'bg-red-400'"
-        class="text-white font-medium px-3 py-1 rounded-full cursor-pointer">{{habit.completed ? 'Completed' : 'Pending'}}</span>
+        <span (click)="toggleHabit(habit)" [ngClass]="habit.completed ? 'bg-emerald-500' : 'bg-red-400'"
+        class="text-white text-xs font-medium px-3 py-1 rounded-full cursor-pointer">{{ habit.completed ? 'Completed' : 'Pending' }}</span>
       </div>
     </div>
   </div>
