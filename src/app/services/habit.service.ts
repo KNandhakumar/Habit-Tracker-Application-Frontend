@@ -17,13 +17,24 @@ export class HabitService {
   // getting all habits from backend
   getHabits():Observable<Habit[]>{
     // this.http.get<Habit[]> makes a get request and expects an array of Habit objects
+    // this.http.get<Habit[]> makes a get request and expects an array of Habit objects
     return this.http.get<Habit[]>(this.apiUrl);
   };
 
   // create habits
   createHabit(habit:Habit):Observable<Habit>{
     // this.http.get<Habit[]> makes a post request to create a new habit
+    // this.http.get<Habit[]> makes a post request to create a new habit
     return this.http.post<Habit>(this.apiUrl,habit);
+  };
+
+  // update habit
+  updateHabit(habit:Habit):Observable<Habit>{
+    return this.http.put<Habit>(`${this.apiUrl}/${habit.id}`,habit);
+  };
+
+  deleteService(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   };
 
 }
